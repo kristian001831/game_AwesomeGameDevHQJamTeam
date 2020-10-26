@@ -7,6 +7,8 @@ public class CardSO : ScriptableObject
 {
     [Header("GeneralCardInfo")]
     public Sprite cardSprite;
+
+    [TextArea(5,10)]
     public string mainDescription;
 
     public string leftDescription;

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307aeb1c12540cd4998c26698a34de7d, type: 3}
+  m_Name: Bird
+  m_EditorClassIdentifier: 
+  cardSprite: {fileID: 0}
+  mainDescription: 
+  leftDescription: 
+  rightDescription: 
+  leftFollowUpCards: []
+  rightFollowUpCards: []
+  left_changeInHunger: 0
+  left_changeInThirst: 0
+  left_changeInShelter: 0
+  left_changeInPanic: 0
+  right_changeInHunger: 0
+  right_changeInThirst: 0
+  right_changeInShelter: 0
+  right_changeInPanic: 0
+  isMinigameCard: 0
+  miniGameSceneString: 
+  isGameOverCard: 0
