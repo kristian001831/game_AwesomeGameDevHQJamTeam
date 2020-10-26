@@ -2,17 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CardManager : MonoBehaviour
 {
-    ResourceManager resourceManager;
+    #region Singleton 
 
-    public CardSO[] cards;
-    CardSO currentlySelectedCard = null;
+    public static CardManager instance;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogError("There are two card managers, please remove one of them");
+        }
+    }
+
+
+    #endregion
+
+    public string mainMenuSceneString;
+    ResourceManager resourceManager;
 
     public TextMeshProUGUI mainDescriptionText;
     public TextMeshProUGUI leftDescriptionText;
     public TextMeshProUGUI rightDescriptionText;
+
+    [Header("Cards")]
+    public CardSO[] cards;
+    CardSO currentlySelectedCard = null;
+
+    [Header("GameOverCards")]
+    public CardSO hungerGameOverCard;
+    public CardSO thirstGameOverCard;
+    public CardSO shelterGameOverCard;
+    public CardSO panicGameOverCard;
+
 
     bool choseLeft = false;
     bool choseRight = false;
@@ -35,26 +64,52 @@ public class CardManager : MonoBehaviour
     void ChooseNextCard()
     {
         resourceManager.UpdateResourcesDisplay();
+        bool gameOver = resourceManager.CheckIfGameOver();
 
-        if(currentlySelectedCard == null)
+        if (gameOver)
         {
-            //Picks out random card from all the cards
-            ChooseNonFollowUpCard();
+            //make currently selected card a gameOverCard
+
+            if(resourceManager.hunger == 0)
+            {
+                currentlySelectedCard = hungerGameOverCard;
+            }
+            else if(resourceManager.thirst == 0)
+            {
+                currentlySelectedCard = thirstGameOverCard;
+            }
+            else if (resourceManager.shelter == 0)
+            {
+                currentlySelectedCard = shelterGameOverCard;
+            }
+            else if (resourceManager.panic == 100)
+            {
+                currentlySelectedCard = panicGameOverCard;
+            }
+
         }
         else
         {
-            if (choseLeft && currentlySelectedCard.leftFollowUpCards.Length > 0)
-            {
-                ChooseFollowUpCard(true);
-            }
-            else if (choseRight && currentlySelectedCard.rightFollowUpCards.Length > 0)
-            {
-                ChooseFollowUpCard(false);
-            }
-            else
+            if (currentlySelectedCard == null)
             {
                 //Picks out random card from all the cards
                 ChooseNonFollowUpCard();
+            }
+            else
+            {
+                if (choseLeft && currentlySelectedCard.leftFollowUpCards.Length > 0)
+                {
+                    ChooseFollowUpCard(true);
+                }
+                else if (choseRight && currentlySelectedCard.rightFollowUpCards.Length > 0)
+                {
+                    ChooseFollowUpCard(false);
+                }
+                else
+                {
+                    //Picks out random card from all the cards
+                    ChooseNonFollowUpCard();
+                }
             }
         }
 
@@ -62,6 +117,7 @@ public class CardManager : MonoBehaviour
         choseRight = false;
 
         UpdateCardDisplay();
+
     }
 
     void ChooseFollowUpCard(bool left)
@@ -109,26 +165,38 @@ public class CardManager : MonoBehaviour
 
     public void LeftCardButtonPressed()
     {
-        resourceManager.hunger += currentlySelectedCard.left_changeInHunger;
-        resourceManager.thirst += currentlySelectedCard.left_changeInThirst;
-        resourceManager.shelter += currentlySelectedCard.left_changeInShelter;
-        resourceManager.panic += currentlySelectedCard.left_changeInPanic;
+        if (currentlySelectedCard.isGameOverCard)
+        {
+            SceneManager.LoadScene(mainMenuSceneString);
+        }
+        else
+        {
+            resourceManager.hunger += currentlySelectedCard.left_changeInHunger;
+            resourceManager.thirst += currentlySelectedCard.left_changeInThirst;
+            resourceManager.shelter += currentlySelectedCard.left_changeInShelter;
+            resourceManager.panic += currentlySelectedCard.left_changeInPanic;
 
-        choseLeft = true;
-        ChooseNextCard();
+            choseLeft = true;
+            ChooseNextCard();
+        }        
     }
 
     public void RightCardButtonPressed()
     {
-        resourceManager.hunger += currentlySelectedCard.right_changeInHunger;
-        resourceManager.thirst += currentlySelectedCard.right_changeInThirst;
-        resourceManager.shelter += currentlySelectedCard.right_changeInShelter;
-        resourceManager.panic += currentlySelectedCard.right_changeInPanic;
+        if (currentlySelectedCard.isGameOverCard)
+        {
+            SceneManager.LoadScene(mainMenuSceneString);
+        }
+        else
+        {
+            resourceManager.hunger += currentlySelectedCard.right_changeInHunger;
+            resourceManager.thirst += currentlySelectedCard.right_changeInThirst;
+            resourceManager.shelter += currentlySelectedCard.right_changeInShelter;
+            resourceManager.panic += currentlySelectedCard.right_changeInPanic;
 
-        choseRight = true;
-        ChooseNextCard();
+            choseRight = true;
+            ChooseNextCard();
+        }        
     }
-
-
-
+    
 }

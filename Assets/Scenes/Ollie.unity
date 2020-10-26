@@ -696,7 +696,7 @@ RectTransform:
   - {fileID: 1000510577}
   - {fileID: 290264567}
   m_Father: {fileID: 1018233599}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1169,8 +1169,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 765646910}
   - {fileID: 1208184736}
+  - {fileID: 765646910}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1405,7 +1405,7 @@ RectTransform:
   - {fileID: 1927615076}
   - {fileID: 9731274}
   m_Father: {fileID: 1018233599}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1626,7 +1626,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -21.308952, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1735,14 +1735,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da7ed92cbca16c4e8dd304a5c4ad214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuSceneString: MainMenu
+  mainDescriptionText: {fileID: 290264568}
+  leftDescriptionText: {fileID: 293696475}
+  rightDescriptionText: {fileID: 1326546912}
   cards:
   - {fileID: 11400000, guid: 5d7bb5e8fe8851e4b8a1d1d76a124ceb, type: 2}
   - {fileID: 11400000, guid: c885b70b36347f24ea6abc38e21661df, type: 2}
   - {fileID: 11400000, guid: d40ea3cc1d02faf40b37bc52d0c23698, type: 2}
   - {fileID: 11400000, guid: b2ab3991d0b590048a70b281b8c2b057, type: 2}
-  mainDescriptionText: {fileID: 290264568}
-  leftDescriptionText: {fileID: 293696475}
-  rightDescriptionText: {fileID: 1326546912}
+  hungerGameOverCard: {fileID: 11400000, guid: f00f81c3796d72540a5beea6ca8fefdb, type: 2}
+  thirstGameOverCard: {fileID: 11400000, guid: 6c45e41ea2a231b408ad83298050b857, type: 2}
+  shelterGameOverCard: {fileID: 11400000, guid: 9b2eda27dfcd4644e81fc771cdc4fcaa, type: 2}
+  panicGameOverCard: {fileID: 11400000, guid: b90c646055aaba9428744bf716da1b40, type: 2}
 --- !u!4 &1906188092
 Transform:
   m_ObjectHideFlags: 0

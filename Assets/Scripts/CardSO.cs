@@ -28,5 +28,13 @@ public class CardSO : ScriptableObject
     public int right_changeInShelter;
     public int right_changeInPanic;
 
+    [Header("MiniGame - (you can leave this blank if it is not a minigame card)")]
+    public bool isMinigameCard;
+    public string miniGameSceneString;
+
+
+    [Header("GameOverCard - (you can leave this blank if it is not a game over card)")]
+    public bool isGameOverCard;
+
 
 }
