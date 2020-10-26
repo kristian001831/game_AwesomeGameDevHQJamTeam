@@ -1748,6 +1748,7 @@ MonoBehaviour:
   thirstGameOverCard: {fileID: 11400000, guid: 6c45e41ea2a231b408ad83298050b857, type: 2}
   shelterGameOverCard: {fileID: 11400000, guid: 9b2eda27dfcd4644e81fc771cdc4fcaa, type: 2}
   panicGameOverCard: {fileID: 11400000, guid: b90c646055aaba9428744bf716da1b40, type: 2}
+  allCardsCompletedCard: {fileID: 11400000, guid: 0fc3c13a45c872b449e7824448275753, type: 2}
 --- !u!4 &1906188092
 Transform:
   m_ObjectHideFlags: 0

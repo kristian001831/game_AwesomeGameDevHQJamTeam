@@ -13,6 +13,7 @@ public class CardSO : ScriptableObject
     public string rightDescription;
 
     [Header("FollowUpCards - (you can leave this blank if it has no follow up cards)")]
+    public bool isAFollowUpCard;
     public CardSO[] leftFollowUpCards;
     public CardSO[] rightFollowUpCards;
 

@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 307aeb1c12540cd4998c26698a34de7d, type: 3}
-  m_Name: CampfireP2
+  m_Name: CampfireFU1
   m_EditorClassIdentifier: 
   cardSprite: {fileID: 0}
   mainDescription: The campfire will run low soon, venture out to get more firewood?
   leftDescription: No
   rightDescription: Yes
+  isAFollowUpCard: 1
   leftFollowUpCards: []
   rightFollowUpCards: []
   left_changeInHunger: 0

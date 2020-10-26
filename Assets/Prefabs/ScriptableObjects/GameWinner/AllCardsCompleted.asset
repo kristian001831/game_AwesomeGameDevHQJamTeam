@@ -10,24 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 307aeb1c12540cd4998c26698a34de7d, type: 3}
-  m_Name: Campfire
+  m_Name: AllCardsCompleted
   m_EditorClassIdentifier: 
   cardSprite: {fileID: 0}
-  mainDescription: Its getting colder, a campfire could be a great option!
-  leftDescription: Not now
-  rightDescription: Build Campfire
-  isAFollowUpCard: 0
+  mainDescription: You have completed every task in order to survive the island!
+  leftDescription: You Win!
+  rightDescription: You Win!
   leftFollowUpCards: []
-  rightFollowUpCards:
-  - {fileID: 11400000, guid: e37c770c76368f1409f673ad6ee3ad71, type: 2}
+  rightFollowUpCards: []
   left_changeInHunger: 0
   left_changeInThirst: 0
-  left_changeInShelter: -10
+  left_changeInShelter: 0
   left_changeInPanic: 0
-  right_changeInHunger: -5
-  right_changeInThirst: -5
-  right_changeInShelter: 15
-  right_changeInPanic: -5
+  right_changeInHunger: 0
+  right_changeInThirst: 0
+  right_changeInShelter: 0
+  right_changeInPanic: 0
   isMinigameCard: 0
   miniGameSceneString: 
-  isGameOverCard: 0
+  isGameOverCard: 1

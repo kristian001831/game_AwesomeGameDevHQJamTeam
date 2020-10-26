@@ -35,12 +35,16 @@ public class CardManager : MonoBehaviour
     [Header("Cards")]
     public CardSO[] cards;
     CardSO currentlySelectedCard = null;
+    List<CardSO> usedCards;
 
     [Header("GameOverCards")]
     public CardSO hungerGameOverCard;
     public CardSO thirstGameOverCard;
     public CardSO shelterGameOverCard;
     public CardSO panicGameOverCard;
+
+    [Header("WinCards")]
+    public CardSO allCardsCompletedCard;
 
 
     bool choseLeft = false;
@@ -49,6 +53,7 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         resourceManager = ResourceManager.instance;
+        usedCards = new List<CardSO>();
 
         if(cards.Length == 0)
         {
@@ -145,12 +150,21 @@ public class CardManager : MonoBehaviour
 
         if (currentlySelectedCard != null)
         {
+
             //Loop to ensure that the same card cannot appear again
-            while (nextCard == currentlySelectedCard)
+            if(cards.Length == usedCards.Count)
             {
-                randCardIndex = Random.Range(0, cards.Length);
-                nextCard = cards[randCardIndex];
+                //This means that we have looked at all of the cards and therefore the player can win
+                nextCard = allCardsCompletedCard;                
             }
+            else
+            {
+                while (nextCard == currentlySelectedCard || usedCards.Contains(nextCard))
+                {
+                    randCardIndex = Random.Range(0, cards.Length);
+                    nextCard = cards[randCardIndex];
+                }
+            }            
         }
 
         currentlySelectedCard = nextCard;
@@ -193,6 +207,12 @@ public class CardManager : MonoBehaviour
             resourceManager.thirst += currentlySelectedCard.right_changeInThirst;
             resourceManager.shelter += currentlySelectedCard.right_changeInShelter;
             resourceManager.panic += currentlySelectedCard.right_changeInPanic;
+
+            //Need to ensure that if this is a follow on card that we do not add it to the list
+            if (!currentlySelectedCard.isAFollowUpCard)
+            {
+                usedCards.Add(currentlySelectedCard);
+            }            
 
             choseRight = true;
             ChooseNextCard();
