@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0770727a451e44546acf96e626135499, type: 3}
+  m_Name: Campfire
+  m_EditorClassIdentifier: 
+  cardSprite: {fileID: 0}
+  mainDescription: Its starting to get dark, do you wish to build a campfire?
+  leftDescription: No
+  rightDescription: Yes
+  leftFollowUpCards: []
+  rightFollowUpCards:
+  - {fileID: 11400000, guid: ca3340b6fcc41e54fa86233dcba4584c, type: 2}
+  left_changeInHunger: 0
+  left_changeInThirst: 0
+  left_changeInShelter: -15
+  left_changeInPanic: 0
+  right_changeInHunger: -5
+  right_changeInThirst: -5
+  right_changeInShelter: 15
+  right_changeInPanic: 0
