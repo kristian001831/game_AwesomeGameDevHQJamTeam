@@ -634,7 +634,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 325512479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e31bb328067d7a845b71bb0a39bb56b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 87f8e0cfdcfa3b5499ee661bb3faba33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hungerText: {fileID: 834955769}
@@ -1732,7 +1732,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1906188090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da7ed92cbca16c4e8dd304a5c4ad214, type: 3}
+  m_Script: {fileID: 11500000, guid: 705e4d01340372240b0d8076d176ba35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuSceneString: MainMenu
@@ -1740,10 +1740,10 @@ MonoBehaviour:
   leftDescriptionText: {fileID: 293696475}
   rightDescriptionText: {fileID: 1326546912}
   cards:
-  - {fileID: 11400000, guid: 5d7bb5e8fe8851e4b8a1d1d76a124ceb, type: 2}
   - {fileID: 11400000, guid: c885b70b36347f24ea6abc38e21661df, type: 2}
-  - {fileID: 11400000, guid: d40ea3cc1d02faf40b37bc52d0c23698, type: 2}
   - {fileID: 11400000, guid: b2ab3991d0b590048a70b281b8c2b057, type: 2}
+  - {fileID: 11400000, guid: d40ea3cc1d02faf40b37bc52d0c23698, type: 2}
+  - {fileID: 11400000, guid: 5d7bb5e8fe8851e4b8a1d1d76a124ceb, type: 2}
   hungerGameOverCard: {fileID: 11400000, guid: f00f81c3796d72540a5beea6ca8fefdb, type: 2}
   thirstGameOverCard: {fileID: 11400000, guid: 6c45e41ea2a231b408ad83298050b857, type: 2}
   shelterGameOverCard: {fileID: 11400000, guid: 9b2eda27dfcd4644e81fc771cdc4fcaa, type: 2}

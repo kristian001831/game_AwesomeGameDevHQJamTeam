@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0770727a451e44546acf96e626135499, type: 3}
+  m_Script: {fileID: 11500000, guid: 307aeb1c12540cd4998c26698a34de7d, type: 3}
   m_Name: ThirstGameOver
   m_EditorClassIdentifier: 
   cardSprite: {fileID: 0}
-  mainDescription: You have died of dehydration!
+  mainDescription: You have died of thirst!
   leftDescription: Game Over!
   rightDescription: Game Over!
   leftFollowUpCards: []
