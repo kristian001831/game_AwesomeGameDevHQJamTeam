@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 307aeb1c12540cd4998c26698a34de7d, type: 3}
-  m_Name: Pig
+  m_Name: Cave
   m_EditorClassIdentifier: 
   cardSprite: {fileID: 0}
-  mainDescription: A wild pig was spotted on the beach, it could be a great source
-    of food
-  leftDescription: I can't kill a poor little pig
-  rightDescription: Lets kill it!
+  mainDescription: You have found a cave by the shore, I wonder whats inside.
+  leftDescription: Hell No!
+  rightDescription: Lets Explore It!
   isAFollowUpCard: 0
   leftFollowUpCards: []
-  rightFollowUpCards: []
-  left_changeInFood: -5
+  rightFollowUpCards:
+  - {fileID: 11400000, guid: d1cc015682c34ad49a73fcd7ce1573be, type: 2}
+  - {fileID: 11400000, guid: 3d2debac68ecaf047b765e567ca288b0, type: 2}
+  left_changeInFood: 0
   left_changeInWater: 0
   left_changeInEnergy: 0
-  left_changeInSanity: 0
-  right_changeInFood: 20
+  left_changeInSanity: -10
+  right_changeInFood: 0
   right_changeInWater: 0
-  right_changeInEnergy: -10
-  right_changeInSanity: 0
+  right_changeInEnergy: -20
+  right_changeInSanity: -5
   isMinigameCard: 0
   miniGameSceneString: 
   isGameOverCard: 0
