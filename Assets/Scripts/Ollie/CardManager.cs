@@ -27,6 +27,7 @@ public class CardManager : MonoBehaviour
 
     public string mainMenuSceneString;
     ResourceManager resourceManager;
+    TimeManager timeManager;
 
     public TextMeshProUGUI mainDescriptionText;
     public TextMeshProUGUI leftDescriptionText;
@@ -34,25 +35,28 @@ public class CardManager : MonoBehaviour
 
     [Header("Cards")]
     public CardSO[] cards;
+
     CardSO currentlySelectedCard = null;
     List<CardSO> usedCards;
 
     [Header("GameOverCards")]
-    public CardSO hungerGameOverCard;
-    public CardSO thirstGameOverCard;
-    public CardSO shelterGameOverCard;
-    public CardSO panicGameOverCard;
+    public CardSO foodGameOverCard;
+    public CardSO waterGameOverCard;
+    public CardSO energyGameOver;
+    public CardSO sanityGameOver;
 
     [Header("WinCards")]
     public CardSO allCardsCompletedCard;
-
+    public CardSO survivedAllDaysCard;
 
     bool choseLeft = false;
     bool choseRight = false;
 
+
     private void Start()
     {
         resourceManager = ResourceManager.instance;
+        timeManager = TimeManager.instance;
         usedCards = new List<CardSO>();
 
         if(cards.Length == 0)
@@ -70,52 +74,61 @@ public class CardManager : MonoBehaviour
     {
         resourceManager.UpdateResourcesDisplay();
         bool gameOver = resourceManager.CheckIfGameOver();
+        bool hasSurvivedAllDays = timeManager.IncreaseTimeOfDay();
 
         if (gameOver)
         {
             //make currently selected card a gameOverCard
 
-            if(resourceManager.hunger == 0)
+            if (resourceManager.food == 0)
             {
-                currentlySelectedCard = hungerGameOverCard;
+                currentlySelectedCard = foodGameOverCard;
             }
-            else if(resourceManager.thirst == 0)
+            else if(resourceManager.water == 0)
             {
-                currentlySelectedCard = thirstGameOverCard;
+                currentlySelectedCard = waterGameOverCard;
             }
-            else if (resourceManager.shelter == 0)
+            else if (resourceManager.energy == 0)
             {
-                currentlySelectedCard = shelterGameOverCard;
+                currentlySelectedCard = energyGameOver;
             }
-            else if (resourceManager.panic == 100)
+            else if (resourceManager.sanity == 100)
             {
-                currentlySelectedCard = panicGameOverCard;
+                currentlySelectedCard = sanityGameOver;
             }
 
         }
         else
         {
-            if (currentlySelectedCard == null)
+            if (hasSurvivedAllDays)
             {
-                //Picks out random card from all the cards
-                ChooseNonFollowUpCard();
+                currentlySelectedCard = survivedAllDaysCard;
             }
             else
             {
-                if (choseLeft && currentlySelectedCard.leftFollowUpCards.Length > 0)
-                {
-                    ChooseFollowUpCard(true);
-                }
-                else if (choseRight && currentlySelectedCard.rightFollowUpCards.Length > 0)
-                {
-                    ChooseFollowUpCard(false);
-                }
-                else
+                if (currentlySelectedCard == null)
                 {
                     //Picks out random card from all the cards
                     ChooseNonFollowUpCard();
                 }
+                else
+                {
+                    if (choseLeft && currentlySelectedCard.leftFollowUpCards.Length > 0)
+                    {
+                        ChooseFollowUpCard(true);
+                    }
+                    else if (choseRight && currentlySelectedCard.rightFollowUpCards.Length > 0)
+                    {
+                        ChooseFollowUpCard(false);
+                    }
+                    else
+                    {
+                        //Picks out random card from all the cards
+                        ChooseNonFollowUpCard();
+                    }
+                }
             }
+            
         }
 
         choseLeft = false;
@@ -159,10 +172,20 @@ public class CardManager : MonoBehaviour
             }
             else
             {
+                int numTimeInWhileLoop = 0;
+
                 while (nextCard == currentlySelectedCard || usedCards.Contains(nextCard))
                 {
                     randCardIndex = Random.Range(0, cards.Length);
                     nextCard = cards[randCardIndex];
+
+                    numTimeInWhileLoop += 1;
+                    if(numTimeInWhileLoop > 100) //This is just to prevent 
+                    {
+                        Debug.LogError("THIS WOULD HAVE CRASHED, PLEASE CHECK ALL CODE IS WORKING CORRECTLY");
+                        break;
+                    }
+
                 }
             }            
         }
@@ -185,10 +208,15 @@ public class CardManager : MonoBehaviour
         }
         else
         {
-            resourceManager.hunger += currentlySelectedCard.left_changeInHunger;
-            resourceManager.thirst += currentlySelectedCard.left_changeInThirst;
-            resourceManager.shelter += currentlySelectedCard.left_changeInShelter;
-            resourceManager.panic += currentlySelectedCard.left_changeInPanic;
+            resourceManager.food += currentlySelectedCard.left_changeInFood;
+            resourceManager.water += currentlySelectedCard.left_changeInWater;
+            resourceManager.energy += currentlySelectedCard.left_changeInEnergy;
+            resourceManager.sanity += currentlySelectedCard.left_changeInSanity;
+
+            if (!currentlySelectedCard.isAFollowUpCard)
+            {
+                usedCards.Add(currentlySelectedCard);
+            }
 
             choseLeft = true;
             ChooseNextCard();
@@ -203,10 +231,10 @@ public class CardManager : MonoBehaviour
         }
         else
         {
-            resourceManager.hunger += currentlySelectedCard.right_changeInHunger;
-            resourceManager.thirst += currentlySelectedCard.right_changeInThirst;
-            resourceManager.shelter += currentlySelectedCard.right_changeInShelter;
-            resourceManager.panic += currentlySelectedCard.right_changeInPanic;
+            resourceManager.food += currentlySelectedCard.right_changeInFood;
+            resourceManager.water += currentlySelectedCard.right_changeInWater;
+            resourceManager.energy += currentlySelectedCard.right_changeInEnergy;
+            resourceManager.sanity += currentlySelectedCard.right_changeInSanity;
 
             //Need to ensure that if this is a follow on card that we do not add it to the list
             if (!currentlySelectedCard.isAFollowUpCard)

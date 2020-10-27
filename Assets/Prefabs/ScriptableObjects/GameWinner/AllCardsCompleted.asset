@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: AllCardsCompleted
   m_EditorClassIdentifier: 
   cardSprite: {fileID: 0}
-  mainDescription: You have completed every task in order to survive the island!
-  leftDescription: You Win!
-  rightDescription: You Win!
+  mainDescription: Congratulations! You have completed every task in order to survive
+    the island!
+  leftDescription: Get Me Out!
+  rightDescription: Get Me Out!
+  isAFollowUpCard: 0
   leftFollowUpCards: []
   rightFollowUpCards: []
   left_changeInHunger: 0

@@ -20,30 +20,30 @@ public class ResourceManager : MonoBehaviour
             Debug.LogError("There are two resourceManager scripts and this will cause a lot of problems, please remove one of them");
         }
 
-        hunger = startHunger;
-        thirst = startThirst;
-        shelter = startShelter;
-        panic = startPanic;
+        food = startFood;
+        water = startWater;
+        energy = startEnergy;
+        sanity = startSanity;
     }
 
     #endregion
 
     [Header("UI Referrences")]
-    [SerializeField] TextMeshProUGUI hungerText;
-    [SerializeField] TextMeshProUGUI thirstText;
-    [SerializeField] TextMeshProUGUI shelterText;
-    [SerializeField] TextMeshProUGUI panicText;
+    [SerializeField] TextMeshProUGUI foodText;
+    [SerializeField] TextMeshProUGUI waterText;
+    [SerializeField] TextMeshProUGUI energyText;
+    [SerializeField] TextMeshProUGUI sanityText;
 
     [Header("Resources")]
-    [SerializeField] int startHunger;
-    [SerializeField] int startThirst;
-    [SerializeField] int startShelter;
-    [SerializeField] int startPanic;
+    [SerializeField] int startFood;
+    [SerializeField] int startWater;
+    [SerializeField] int startEnergy;
+    [SerializeField] int startSanity;
 
-    public int hunger;
-    public int thirst;
-    public int shelter;
-    public int panic;
+    public int food;
+    public int water;
+    public int energy;
+    public int sanity;
 
     //returns true if game over, else returns false
     public void UpdateResourcesDisplay()
@@ -51,51 +51,51 @@ public class ResourceManager : MonoBehaviour
         EnsureResourcesAreWithinCorrectRange();        
 
         //Update UI
-        hungerText.text = "Hunger: " + hunger.ToString(); 
-        thirstText.text = "Thirst: " + thirst.ToString(); 
-        shelterText.text = "Shelter: " + shelter.ToString(); 
-        panicText.text = "Panic: " + panic.ToString();        
+        foodText.text = "Food: " + food.ToString(); 
+        waterText.text = "Water: " + water.ToString(); 
+        energyText.text = "Energy: " + energy.ToString(); 
+        sanityText.text = "Sanity: " + sanity.ToString();        
     }
 
     void EnsureResourcesAreWithinCorrectRange()
     {
-        if (hunger < 0)
+        if (food < 0)
         {
-            hunger = 0;
+            food = 0;
         }
-        else if(hunger > 100)
+        else if(food > 100)
         {
-            hunger = 100;
-        }
-
-
-        if (thirst < 0)
-        {
-            thirst = 0;
-        }
-        else if (thirst > 100)
-        {
-            thirst = 100;
+            food = 100;
         }
 
 
-        if (shelter < 0)
+        if (water < 0)
         {
-            shelter = 0;
+            water = 0;
         }
-        else if (shelter > 100)
+        else if (water > 100)
         {
-            shelter = 100;
+            water = 100;
         }
 
 
-        if (panic < 0)
+        if (energy < 0)
         {
-            panic = 0;
+            energy = 0;
         }
-        else if (panic > 100)
+        else if (energy > 100)
         {
-            panic = 100;
+            energy = 100;
+        }
+
+
+        if (sanity < 0)
+        {
+            sanity = 0;
+        }
+        else if (sanity > 100)
+        {
+            sanity = 100;
         }
 
 
@@ -103,19 +103,19 @@ public class ResourceManager : MonoBehaviour
 
     public bool CheckIfGameOver()
     {
-        if (hunger == 0)
+        if (food == 0)
         {
             return true;
         }
-        else if (thirst == 0)
+        else if (water == 0)
         {
             return true;
         }
-        else if (shelter == 0)
+        else if (energy == 0)
         {
             return true;
         }
-        else if (panic == 100)
+        else if (sanity == 0)
         {
             return true;
         }

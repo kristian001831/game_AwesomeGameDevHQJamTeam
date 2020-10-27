@@ -13,19 +13,20 @@ MonoBehaviour:
   m_Name: Map
   m_EditorClassIdentifier: 
   cardSprite: {fileID: 0}
-  mainDescription: Creating a map of the island could really save time!
-  leftDescription: No
-  rightDescription: Yes
+  mainDescription: A map of the island could be really help us get around!
+  leftDescription: Too much effort!
+  rightDescription: Yeah let's does it!
+  isAFollowUpCard: 0
   leftFollowUpCards: []
   rightFollowUpCards: []
-  left_changeInHunger: 0
-  left_changeInThirst: 0
-  left_changeInShelter: 0
-  left_changeInPanic: 15
-  right_changeInHunger: -10
-  right_changeInThirst: -10
-  right_changeInShelter: 0
-  right_changeInPanic: -25
+  left_changeInFood: 0
+  left_changeInWater: 0
+  left_changeInEnergy: 0
+  left_changeInSanity: -15
+  right_changeInFood: 0
+  right_changeInWater: 0
+  right_changeInEnergy: -30
+  right_changeInSanity: 30
   isMinigameCard: 0
   miniGameSceneString: 
   isGameOverCard: 0

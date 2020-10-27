@@ -20,16 +20,16 @@ public class CardSO : ScriptableObject
     public CardSO[] rightFollowUpCards;
 
     [Header("LeftResult")]
-    public int left_changeInHunger;
-    public int left_changeInThirst;
-    public int left_changeInShelter;
-    public int left_changeInPanic;
+    public int left_changeInFood;
+    public int left_changeInWater;
+    public int left_changeInEnergy;
+    public int left_changeInSanity;
 
     [Header("RightResult")]
-    public int right_changeInHunger;
-    public int right_changeInThirst;
-    public int right_changeInShelter;
-    public int right_changeInPanic;
+    public int right_changeInFood;
+    public int right_changeInWater;
+    public int right_changeInEnergy;
+    public int right_changeInSanity;
 
     [Header("MiniGame - (you can leave this blank if it is not a minigame card)")]
     public bool isMinigameCard;
