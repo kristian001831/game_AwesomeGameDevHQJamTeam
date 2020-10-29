@@ -61,6 +61,7 @@ public class CardMovement : MonoBehaviour
         }
 
         textParent.localPosition = new Vector3(transform.localPosition.x * 100, textParent.localPosition.y, textParent.localPosition.z);
+        textParent.localRotation = transform.rotation;
 
 
     }
@@ -82,6 +83,8 @@ public class CardMovement : MonoBehaviour
 
             transform.localPosition = Vector3.zero;
             transform.rotation = Quaternion.Euler(originalRotation);
+
+            textParent.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
