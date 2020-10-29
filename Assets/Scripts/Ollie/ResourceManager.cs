@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -29,10 +30,11 @@ public class ResourceManager : MonoBehaviour
     #endregion
 
     [Header("UI Referrences")]
-    [SerializeField] TextMeshProUGUI foodText;
-    [SerializeField] TextMeshProUGUI waterText;
-    [SerializeField] TextMeshProUGUI energyText;
-    [SerializeField] TextMeshProUGUI sanityText;
+
+    [SerializeField] Image foodFill;
+    [SerializeField] Image waterFill;
+    [SerializeField] Image energyFill;
+    [SerializeField] Image sanityFill;
 
     [Header("Resources")]
     [SerializeField] int startFood;
@@ -51,10 +53,10 @@ public class ResourceManager : MonoBehaviour
         EnsureResourcesAreWithinCorrectRange();        
 
         //Update UI
-        foodText.text = "Food: " + food.ToString(); 
-        waterText.text = "Water: " + water.ToString(); 
-        energyText.text = "Energy: " + energy.ToString(); 
-        sanityText.text = "Sanity: " + sanity.ToString();        
+        foodFill.fillAmount = (float)food / 100;
+        waterFill.fillAmount = (float)water / 100;
+        energyFill.fillAmount = (float)energy / 100;
+        sanityFill.fillAmount = (float)sanity / 100;
     }
 
     void EnsureResourcesAreWithinCorrectRange()

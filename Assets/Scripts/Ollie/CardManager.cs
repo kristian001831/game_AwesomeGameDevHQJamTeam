@@ -75,6 +75,8 @@ public class CardManager : MonoBehaviour
         resourceManager.UpdateResourcesDisplay();
         bool gameOver = resourceManager.CheckIfGameOver();
         bool hasSurvivedAllDays = timeManager.IncreaseTimeOfDay();
+        leftDescriptionText.gameObject.SetActive(false);
+        rightDescriptionText.gameObject.SetActive(false);
 
         if (gameOver)
         {
@@ -180,7 +182,7 @@ public class CardManager : MonoBehaviour
                     nextCard = cards[randCardIndex];
 
                     numTimeInWhileLoop += 1;
-                    if(numTimeInWhileLoop > 100) //This is just to prevent 
+                    if(numTimeInWhileLoop > 100) //This is just to prevent crashes
                     {
                         Debug.LogError("THIS WOULD HAVE CRASHED, PLEASE CHECK ALL CODE IS WORKING CORRECTLY");
                         break;
