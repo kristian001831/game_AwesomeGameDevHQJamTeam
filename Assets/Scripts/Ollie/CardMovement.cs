@@ -20,7 +20,7 @@ public class CardMovement : MonoBehaviour
     bool isTouchingRightSwipe;
 
     [Header("UI To Move")]
-    [SerializeField] RectTransform textParent;
+    [SerializeField] RectTransform  textParent;
 
     private void Start()
     {
@@ -60,6 +60,7 @@ public class CardMovement : MonoBehaviour
             cardManagerReferrence.rightDescriptionText.gameObject.SetActive(false);
         }
 
+        
         textParent.localPosition = new Vector3(transform.localPosition.x * 100, textParent.localPosition.y, textParent.localPosition.z);
         textParent.localRotation = transform.rotation;
 
@@ -84,6 +85,9 @@ public class CardMovement : MonoBehaviour
             transform.localPosition = Vector3.zero;
             transform.rotation = Quaternion.Euler(originalRotation);
 
+
+            print(Camera.main.WorldToScreenPoint(new Vector3(-3.18f, 0, 0)));
+            textParent.position = Camera.main.WorldToScreenPoint(new Vector3(-3.18f, 0, 0));
             textParent.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
