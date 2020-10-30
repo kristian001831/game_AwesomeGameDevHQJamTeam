@@ -75,8 +75,8 @@ public class CardManager : MonoBehaviour
         resourceManager.UpdateResourcesDisplay();
         bool gameOver = resourceManager.CheckIfGameOver();
         bool hasSurvivedAllDays = timeManager.IncreaseTimeOfDay();
-        leftDescriptionText.gameObject.SetActive(false);
-        rightDescriptionText.gameObject.SetActive(false);
+        leftDescriptionText.transform.parent.gameObject.SetActive(false);
+        rightDescriptionText.transform.parent.gameObject.SetActive(false);
 
         if (gameOver)
         {
@@ -247,6 +247,11 @@ public class CardManager : MonoBehaviour
             choseRight = true;
             ChooseNextCard();
         }        
+    }
+
+    public CardSO GetCurrentCard()
+    {
+        return currentlySelectedCard;
     }
     
 }

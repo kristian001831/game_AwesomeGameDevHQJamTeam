@@ -36,6 +36,11 @@ public class ResourceManager : MonoBehaviour
     [SerializeField] Image energyFill;
     [SerializeField] Image sanityFill;
 
+    public Transform foodCircle;
+    public Transform waterCircle;
+    public Transform energyCircle;
+    public Transform sanityCircle;
+
     [Header("Resources")]
     [SerializeField] int startFood;
     [SerializeField] int startWater;

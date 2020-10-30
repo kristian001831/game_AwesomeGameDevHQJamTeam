@@ -359,7 +359,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 60243798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9281255f81b34ec4eb73c6b05e5e705e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ff3f9e13f9fa394fa37ec3e82b6ecf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxXPos: 110
@@ -367,6 +367,8 @@ MonoBehaviour:
   rightSwipe: {fileID: 1898649862}
   maxZRotation: 10
   rotationMultiplier: 2
+  circleSizeScaleFactor: 0.125
+  maxCircleScaleFactor: 1.275
 --- !u!1 &84500685
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +909,10 @@ MonoBehaviour:
   waterFill: {fileID: 1175739885}
   energyFill: {fileID: 339197862}
   sanityFill: {fileID: 51036906}
+  foodCircle: {fileID: 867300717}
+  waterCircle: {fileID: 2080167916}
+  energyCircle: {fileID: 971439478}
+  sanityCircle: {fileID: 1021914967}
   startFood: 50
   startWater: 50
   startEnergy: 80
@@ -1296,8 +1302,6 @@ GameObject:
   - component: {fileID: 851537456}
   - component: {fileID: 851537459}
   - component: {fileID: 851537458}
-  - component: {fileID: 851537457}
-  - component: {fileID: 851537460}
   m_Layer: 5
   m_Name: Left
   m_TagString: Untagged
@@ -1325,61 +1329,6 @@ RectTransform:
   m_AnchoredPosition: {x: -120, y: -49}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &851537457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851537455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 851537458}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1906188091}
-        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: LeftCardButtonPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &851537458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,19 +1367,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851537455}
   m_CullTransparentMesh: 0
---- !u!114 &851537460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851537455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe2018e964c049f4a898e5bdc9e772a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMouseOver: 0
 --- !u!1 &867300716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,12 +1379,12 @@ GameObject:
   - component: {fileID: 867300719}
   - component: {fileID: 867300718}
   m_Layer: 5
-  m_Name: Circle
+  m_Name: FoodCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &867300717
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1458,14 +1394,14 @@ RectTransform:
   m_GameObject: {fileID: 867300716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
   m_Children: []
   m_Father: {fileID: 792289965}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -59, y: 290}
+  m_AnchoredPosition: {x: -59, y: 344}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &867300718
@@ -1668,12 +1604,12 @@ GameObject:
   - component: {fileID: 971439480}
   - component: {fileID: 971439479}
   m_Layer: 5
-  m_Name: Circle
+  m_Name: EnergyCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &971439478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1690,7 +1626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 290}
+  m_AnchoredPosition: {x: 0, y: 344.00052}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971439479
@@ -1778,7 +1714,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 986949928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe2018e964c049f4a898e5bdc9e772a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fc0b3d5be8222440a9b7e68e94aa736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isMouseOver: 0
@@ -1896,7 +1832,6 @@ GameObject:
   - component: {fileID: 1000510577}
   - component: {fileID: 1000510580}
   - component: {fileID: 1000510579}
-  - component: {fileID: 1000510578}
   m_Layer: 5
   m_Name: Right
   m_TagString: Untagged
@@ -1924,61 +1859,6 @@ RectTransform:
   m_AnchoredPosition: {x: 343, y: 69}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1000510578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000510576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1000510579}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1906188091}
-        m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: RightCardButtonPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1000510579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2129,7 +2009,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1018233598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55ef218397b4054bbcffa8ff156a896, type: 3}
+  m_Script: {fileID: 11500000, guid: a3f445e7ffa6be14f9b4fb680258cb3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1021914966
@@ -2144,12 +2024,12 @@ GameObject:
   - component: {fileID: 1021914969}
   - component: {fileID: 1021914968}
   m_Layer: 5
-  m_Name: Circle
+  m_Name: SanityCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1021914967
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2166,7 +2046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 290}
+  m_AnchoredPosition: {x: 0, y: 344.00052}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1021914968
@@ -2887,7 +2767,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1898649858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe2018e964c049f4a898e5bdc9e772a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fc0b3d5be8222440a9b7e68e94aa736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isMouseOver: 0
@@ -3037,12 +2917,12 @@ GameObject:
   - component: {fileID: 2080167918}
   - component: {fileID: 2080167917}
   m_Layer: 5
-  m_Name: Circle
+  m_Name: WaterCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2080167916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3059,7 +2939,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 290}
+  m_AnchoredPosition: {x: 0, y: 344.00052}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2080167917

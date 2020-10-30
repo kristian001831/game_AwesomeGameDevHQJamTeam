@@ -48,11 +48,11 @@ public class CardMovement : MonoBehaviour
 
         if (isTouchingLeftSwipe)
         {
-            cardManagerReferrence.leftDescriptionText.gameObject.SetActive(true);
+            cardManagerReferrence.leftDescriptionText.transform.parent.gameObject.SetActive(true);
         }
         else if(isTouchingRightSwipe)
         {
-            cardManagerReferrence.rightDescriptionText.gameObject.SetActive(true);
+            cardManagerReferrence.rightDescriptionText.transform.parent.gameObject.SetActive(true);
         }
         else
         {
